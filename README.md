@@ -45,3 +45,79 @@ CREATE DATABASE tuum
 
 COMMENT ON DATABASE tuum
     IS 'For the tuum developer assignment';
+    
+    
+    -- Table: public.account
+
+-- DROP TABLE IF EXISTS public.account;
+
+CREATE TABLE IF NOT EXISTS public.account
+(
+    accountid integer NOT NULL DEFAULT nextval('account_id_seq'::regclass),
+    balance numeric,
+    customer integer,
+    currency character varying COLLATE pg_catalog."default",
+    country character varying(100) COLLATE pg_catalog."default",
+    CONSTRAINT account_pkey PRIMARY KEY (accountid)
+)
+
+TABLESPACE pg_default;
+
+ALTER TABLE IF EXISTS public.account
+    OWNER to postgres;
+    
+    
+    -- Table: public.country
+
+-- DROP TABLE IF EXISTS public.country;
+
+CREATE TABLE IF NOT EXISTS public.country
+(
+    id integer NOT NULL DEFAULT nextval('country_id_seq'::regclass),
+    name character varying(50) COLLATE pg_catalog."default",
+    CONSTRAINT country_pkey PRIMARY KEY (id)
+)
+
+TABLESPACE pg_default;
+
+ALTER TABLE IF EXISTS public.country
+    OWNER to postgres;
+    
+    
+    -- Table: public.customer
+
+-- DROP TABLE IF EXISTS public.customer;
+
+CREATE TABLE IF NOT EXISTS public.customer
+(
+    customer_id integer NOT NULL DEFAULT nextval('"customer_customerId_seq"'::regclass),
+    customer_name text COLLATE pg_catalog."default",
+    CONSTRAINT customer_pkey PRIMARY KEY (customer_id)
+)
+
+TABLESPACE pg_default;
+
+ALTER TABLE IF EXISTS public.customer
+    OWNER to postgres;
+    
+    
+    -- Table: public.transaction
+
+-- DROP TABLE IF EXISTS public.transaction;
+
+CREATE TABLE IF NOT EXISTS public.transaction
+(
+    "transactionId" integer NOT NULL DEFAULT nextval('"transaction_transactionId_seq"'::regclass),
+    accountid integer,
+    amount numeric,
+    currency character varying(5) COLLATE pg_catalog."default",
+    transactiondirection character varying(3) COLLATE pg_catalog."default",
+    description character varying COLLATE pg_catalog."default",
+    balance numeric,
+    CONSTRAINT transaction_pkey PRIMARY KEY ("transactionId")
+)
+
+TABLESPACE pg_default;
+
+ALTER TABLE IF EXISTS public.transaction
+    OWNER to postgres;
