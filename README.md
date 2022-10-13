@@ -21,3 +21,27 @@ IMPORTANT CHOICES MADE DURING DEVELOPMENT
 2.	Lombok dependency was used to prevent boilerplate codes for the getter and setter.
 3.	Notation for the constructor was also introduced.
 4.	Aside from the specified requirements in the assignment, other assumptions were taken in case there is an expansion of codes in the future for other endpoints to be readily available.
+
+
+PER SECOND MY APPLICATION CAN HANDLE 20 TRANSACTIONS ON MY DEVELOPMENT MACHINE
+
+SCALING THE APPLICATION 
+You can use the spring cloud project for extra added features like service discovery and other goodies that make scaling easier .
+
+For load balancing you can either choose something like an Nginx or leave it to spring cloud which also has a lot of other handy features for scaling/clustering. Scaling shouldn't be very hard because spring boot runs on it's own server.
+
+
+DATABASE SCRIPTS
+
+CREATE DATABASE tuum
+    WITH
+    OWNER = postgres
+    ENCODING = 'UTF8'
+    LC_COLLATE = 'English_United States.1252'
+    LC_CTYPE = 'English_United States.1252'
+    TABLESPACE = pg_default
+    CONNECTION LIMIT = -1
+    IS_TEMPLATE = False;
+
+COMMENT ON DATABASE tuum
+    IS 'For the tuum developer assignment';
